@@ -19,11 +19,35 @@ $app = new Slim();
 
 require 'helpers/helper.php';
 
-$app->get('/', '');
+$app->get('/', 'home');
+$app->get('/login','login');
+$app->get('/hi/:first/:last/', 'hi');
+$app->get('/test(/)', 'test');
 
 $app->run();
 
 //controllers here!
 
+function home(){
+	global $config;
+
+	$title = "Hello World";
+
+	require $config->viewsPath . "header.php";
+	require $config->viewsPath . "home.php";
+	require $config->viewsPath . "footer.php";
+}
+
+function user(){
+
+}
+
+function hi($first,$last){
+	echo "hi $first $last ";
+}
+
+function test(){
+	phpinfo();
+}
 
 ?>
