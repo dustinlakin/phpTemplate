@@ -20,8 +20,7 @@ $app = new Slim();
 require 'helpers/helper.php';
 
 $app->get('/', 'home');
-$app->get('/login','login');
-$app->get('/hi/:first/:last/', 'hi');
+$app->get('/hi/:first(/)', 'hi');
 $app->get('/test(/)', 'test');
 
 $app->run();
@@ -38,12 +37,9 @@ function home(){
 	require $config->viewsPath . "footer.php";
 }
 
-function user(){
 
-}
-
-function hi($first,$last){
-	echo "hi $first $last ";
+function hi($first){
+	echo "hi $first";
 }
 
 function test(){
